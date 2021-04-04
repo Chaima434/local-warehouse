@@ -1,11 +1,9 @@
 <?php
+    session_start();
     require_once('../../connection/Connection.php');
     require_once('../../model/Admin.php');
-    require_once('../../session/session.php');
-    // NB: toujours on doit declarer Connection.php et Admin.php
     if((isset($_POST['login']))&& (isset($_POST['first_name']))&&(isset($_POST['last_name']))&&(isset($_POST['email']))
-        &&(isset($_POST['address']))  &&(isset($_POST['password']))
-    )
+        &&(isset($_POST['address'])))
     {
         $admin = new Admin();
         $admin->setLogin($_POST['login']);
@@ -13,16 +11,15 @@
         $admin->setLast_name($_POST['last_name']);
         $admin->setEmail($_POST['email']);
         $admin->setAddress($_POST['address']);
-        $admin->setPassword(sha1($_POST['password']));
-        if($admin->add() == 1)
+        if($admin->update($_SESSION['login']))
         {
             echo "good";
-            $session = new Session();
-            $session->connect($admin->getLogin(),$admin->getPassword(),'../../../Admin/index.php',3600);
+            $_SESSION['login'] = $admin->getLogin();
+            header ('location: ../../../Admin/updateProfile.php?page=updateInfo');
         }
         else
         {
-            echo "bad";
+            echo "Bad";
         }
     }
     else

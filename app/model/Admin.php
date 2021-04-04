@@ -95,9 +95,9 @@
                     'password' => $this->password,
                 ];
                 $sql = "INSERT INTO Admin (login, first_name, last_name , email,address,password )
-                        VALUES (:login, :first_name, :last_name , :email, :address, :password)";//c'est une requette parametrer
+                        VALUES (:login, :first_name, :last_name , :email, :address, :password)";
                 $stmt= $connection->con->prepare($sql);
-                return $stmt->execute($data);//ken ykharej 1 requette shyha si non requette ghalta 
+                return $stmt->execute($data);
             }
             catch(Exception $e)
             {
@@ -117,9 +117,9 @@
             {
                 global $connection;
                 $T = array();
-                $res = $connection->con->query("SELECT * from Admin");//query tkharej resultat
+                $res = $connection->con->query("SELECT * from Admin");
                 $i = 0;
-                while($tab=$res->fetch(PDO::FETCH_NUM))//fetch num l'indix colone 
+                while($tab=$res->fetch(PDO::FETCH_NUM))
                 {
                     $T[$i] = $Array = array
                     (
@@ -141,9 +141,58 @@
             }
         }
         
-        public function update()
+        public function update($login)
         {
-            
+            try
+            {
+                global $connection;
+                $data =
+                [
+                    'login' => $this->login,
+                    'first_name' => $this->first_name,
+                    'last_name' => $this->last_name,
+                    'email' => $this->email,
+                    'address' => $this->address,
+                    'old_login' => $login,
+                ];
+                $sql = "UPDATE Admin SET 
+                        login=:login,
+                        first_name=:first_name,
+                        last_name=:last_name,
+                        email=:email,
+                        address=:address 
+                        WHERE login=:old_login";
+                $stmt= $connection->con->prepare($sql);
+                return $stmt->execute($data);
+            }
+            catch(Exception $e)
+            {
+                echo "Error : ".$e;
+                return 0;
+            }
+        }
+        
+        public function updatePassword($login)
+        {
+            try
+            {
+                global $connection;
+                $data =
+                [
+                    'password' => $this->password,
+                    'login' => $login,
+                ];
+                $sql = "UPDATE Admin SET 
+                        password=:password
+                        WHERE login=:login";
+                $stmt= $connection->con->prepare($sql);
+                return $stmt->execute($data);
+            }
+            catch(Exception $e)
+            {
+                echo "Error : ".$e;
+                return 0;
+            }
         }
     }
 ?>

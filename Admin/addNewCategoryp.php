@@ -19,7 +19,7 @@
         ?>
         <div class="main-panel">
           <?php
-            require_once('template/index.php');
+            require_once('template/category/add.php');
           ?>
           <?php
             require_once('template/footer.php');

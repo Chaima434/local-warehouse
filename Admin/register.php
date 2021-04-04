@@ -115,7 +115,7 @@
                     {
                         $("#login").focus();
                         alertify.error('You Should enter your Login');
-                        e.preventDefault();//bech ma ya3malech refrech lil page 
+                        e.preventDefault();
                     }
                     else
                     {
@@ -184,7 +184,7 @@
                                                     }
                                                     else
                                                     {
-                                                        if(agree === false)//checkbox creat
+                                                        if(agree === false)
                                                         {
                                                             $("#agree").focus();
                                                             alertify.error('You should agree to all Terms & Conditions');

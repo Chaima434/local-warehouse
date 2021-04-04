@@ -19,7 +19,24 @@
         ?>
         <div class="main-panel">
           <?php
-            require_once('template/index.php');
+            if(isset($_GET['page']))
+            {
+                if($_GET['page'] == "updateInfo")
+                {
+                    require_once('template/admin/updateInfo.php');
+                }
+                else
+                {
+                  if($_GET['page'] == "updatePassword")
+                  {
+                    require_once('template/admin/updatePassword.php');
+                  }
+                }
+            }
+            else
+            {
+              require_once('template/updateInfo.php');
+            }
           ?>
           <?php
             require_once('template/footer.php');

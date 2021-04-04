@@ -81,22 +81,108 @@
         
         public function add()
         {
-            
+            try
+            {
+                global $connection;
+                $data =
+                [
+                    'first_name' => $this->first_name,
+                    'last_name' => $this->last_name,
+                    'email' => $this->email,
+                    'address' => $this->address,
+                    'telephone' => $this->telephone,
+                ];
+                $sql = "INSERT INTO Provider (first_name, last_name, email , address,telephone )
+                        VALUES (:first_name, :last_name, :email , :address,:telephone)";
+                $stmt= $connection->con->prepare($sql);
+                return $stmt->execute($data);
+            }
+            catch(Exception $e)
+            {
+                echo "Error : ".$e;
+                return 0;
+            }
         }
         
-        public function delete()
+        public function delete($id)
         {
-            
+            try
+            {
+                global $connection;
+                $data =
+                [
+                    'id' => $id,
+                ];
+                $sql = "DELETE FROM Provider where id=$id";
+                $stmt= $connection->con->prepare($sql);
+                return $stmt->execute($data);
+            }
+            catch(Exception $e)
+            {
+                echo "Error : ".$e;
+                return 0;
+            }
         }
         
         public function getAll()
         {
-            
+            try
+            {
+                global $connection;
+                $T = array();
+                $res = $connection->con->query("SELECT * from Provider");
+                $i = 0;
+                while($tab=$res->fetch(PDO::FETCH_NUM))
+                {
+                    $T[$i] = $Array = array
+                    (
+                        'id'=> $tab[0],
+                        'first_name' => $tab[1],
+                        'last_name' => $tab[2],
+                        'email'=> $tab[3],
+                        'address'=> $tab[4],
+                        'telephone' => $tab[5]
+                    );
+                    $i++;
+                }
+                return $T;
+            }
+            catch(Exception $e)
+            {
+                echo "Error : ".$e;
+                return false;
+            }
         }
         
-        public function update()
+        public function update($id)
         {
-            
+            try
+            {
+                global $connection;
+                $data =
+                [
+                    'first_name' => $this->first_name,
+                    'last_name' => $this->last_name,
+                    'email' => $this->email,
+                    'address' => $this->address,
+                    'telephone' => $this->telephone,
+                    'id' => $id,
+                ];
+                $sql = "UPDATE Provider SET 
+                        first_name=:first_name,
+                        last_name=:last_name,
+                        email=:email,
+                        address=:address,
+                        telephone=:telephone
+                        WHERE id=:id";
+                $stmt= $connection->con->prepare($sql);
+                return $stmt->execute($data);
+            }
+            catch(Exception $e)
+            {
+                echo "Error : ".$e;
+                return 0;
+            }
         }
     }
 ?>
