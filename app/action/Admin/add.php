@@ -1,4 +1,5 @@
 <?php
+
     require_once('../../connection/Connection.php');
     require_once('../../model/Admin.php');
     require_once('../../session/session.php');
@@ -11,7 +12,7 @@
         $admin->setLogin($_POST['login']);
         $admin->setFirst_name($_POST['first_name']);
         $admin->setLast_name($_POST['last_name']);
-        $admin->setEmail($_POST['email']);
+        $admin->setEmail(strtolower($_POST['email'])); // we should the email to a lowercase
         $admin->setAddress($_POST['address']);
         $admin->setPassword(sha1($_POST['password']));
         if($admin->add() == 1)

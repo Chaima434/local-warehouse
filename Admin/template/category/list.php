@@ -1,5 +1,5 @@
 <?php
-    require_once('../app/action/Provider/getAll.php');
+    require_once('../app/action/Category/getAll.php');
 ?>
 <style>
 
@@ -10,16 +10,14 @@
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">List of all Provider</h4>
-                        <input type="text" id="myInput" onkeyup="myFunction();" placeholder="Search a provider.." />
+                        <h4 class="card-title">List of all Category</h4>
+                        <input type="text" id="myInput" onkeyup="myFunction();" placeholder="Search a categori.." />
                         <table class="table table-hover" id="example">
                             <thead>
                                 <tr>
-                                    <th>First name</th>
-                                    <th>Last name</th>
-                                    <th>Email</th>
-                                    <th>Address</th>
-                                    <th>Telephone</th>
+                                    
+                                    <th> Label </th>
+                                    <th> Description </th>
                                     <th>Update</th>
                                     <th>Delete</th>
                                 </tr>
@@ -27,20 +25,14 @@
                             <tbody>
                                 <?php
                                     $i = 1;
-                                    foreach($provider->getAll() as $v)
+                                    foreach($listcat as $v)
                                     {
                                         $id = $v{'id'};
-                                        $first_name = $v{'first_name'};
-                                        $last_name = $v{'last_name'};
-                                        $email = $v{'email'};
-                                        $address = $v{'address'};
-                                        $telephone = $v{'telephone'};
+                                        $Label= $v{'label'};
+                                       $Description = $v{'description'};
                                         echo "<tr>";
-                                            echo "<td>$first_name</td>";
-                                            echo "<td>$last_name</td>";
-                                            echo "<td>$email</td>";
-                                            echo "<td>$address</td>";
-                                            echo "<td>$telephone</td>";
+                                            echo "<td> $Label </td> ";
+                                            echo "<td> $Description </td> ";
                                             echo "<td><button onclick='update($id);' class='fa fa-pencil'></button></td>";
                                             echo "<td><button onclick='destroy($id);' class='fa fa-trash'></<button></td>";
                                         echo "<tr>";
@@ -86,7 +78,7 @@
     {
         alertify.confirm
         (
-            "Do you want to delete this provider ?.",
+            "Do you want to delete this category ?.",
             function()
             {
                 $.ajax
@@ -94,7 +86,7 @@
                     {
                         async: false, //if you want to change a global variable you should add this instruction
                         type: 'POST',
-                        url: "../app/action/Provider/delete.php",
+                        url: "../app/action/Category/delete.php",
                         data:
                         {
                             'id' : id
@@ -116,6 +108,6 @@
     
     function update(id)
     {
-        location.href = "Provider_Management.php?page=update&id="+id;
+        location.href = "Category_Management.php?page=update&id="+id;
     }
 </script>

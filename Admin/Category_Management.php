@@ -19,7 +19,19 @@
         ?>
         <div class="main-panel">
           <?php
-            require_once('template/category/add.php');
+            if(isset($_GET['page']))
+            {
+              switch($_GET['page'])
+              {
+                case 'add' : require_once('template/category/add.php');
+                break;
+                case 'list' : require_once('template/category/list.php');
+                break;
+                case 'update' : require_once('template/category/update.php');
+                break;
+              }
+            }
+            
           ?>
           <?php
             require_once('template/footer.php');

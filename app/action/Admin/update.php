@@ -9,7 +9,7 @@
         $admin->setLogin($_POST['login']);
         $admin->setFirst_name($_POST['first_name']);
         $admin->setLast_name($_POST['last_name']);
-        $admin->setEmail($_POST['email']);
+        $admin->setEmail(strtolower($_POST['email'])); // we should convert the email into lowercase
         $admin->setAddress($_POST['address']);
         if($admin->update($_SESSION['login']))
         {

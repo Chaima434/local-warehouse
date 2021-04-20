@@ -1,0 +1,3 @@
+<?php    
+    $provider = new Provider();
+?>

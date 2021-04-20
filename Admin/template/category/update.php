@@ -1,20 +1,24 @@
+<?php
+    require_once('../app/action/Category/findCategoryById.php');
+?>
 <div class="content-wrapper">
     <div class="row">
         <div class="col-md-12 grid-margin">
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Add new Category</h4>
-                        <form class="forms-sample" method="POST" action="../app/action/Category/add.php">
+                        <h4 class="card-title">Update Category</h4>
+                        <form class="forms-sample" method="POST" action="../app/action/Category/update.php">
+                            <input type="text" name="id" value="<?php echo $category->getId() ; ?>" hidden/>
                             <div class="form-group">
                                 <label for="label">Label</label>
-                                <input type="text" class="form-control" id="label" name="label" placeholder="label">
+                                <input type="text" class="form-control" id="label" name="label" placeholder="label" value="<?php echo $category->getLabel() ; ?>">
                             </div>
                             <div class="form-group">
                                <label for="description">Description</label>
-                               <textarea class="form-control" id="description" rows="4" name="description"></textarea>
+                               <textarea  class="form-control" id="description" rows="4" name="description" > <?php echo $category->getDescription() ; ?> </textarea>
                             </div>
-                            <button id="btAddCategory" type="submit" class="btn btn-primary mr-2">Submit</button>
+                            <button id="btUpdateCategory" type="submit" class="btn btn-primary mr-2">Submit</button>
                         </form>
                     </div>
                 </div>
@@ -27,7 +31,7 @@
 	(
 		function()
 		{
-			$("#btAddCategory").click
+			$("#btUpdateCategory").click
 			(
 				function(e)
 				{

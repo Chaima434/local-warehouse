@@ -108,7 +108,15 @@
         
         public function delete()
         {
-            
+            try
+            {
+                return 1;
+            }
+            catch(Exception $e)
+            {
+                echo "Error ".$e;
+                return 0;
+            }
         }
         
         public function getAll()
@@ -156,11 +164,11 @@
                     'old_login' => $login,
                 ];
                 $sql = "UPDATE Admin SET 
-                        login=:login,
-                        first_name=:first_name,
-                        last_name=:last_name,
-                        email=:email,
-                        address=:address 
+                            login=:login,
+                            first_name=:first_name,
+                            last_name=:last_name,
+                            email=:email,
+                            address=:address 
                         WHERE login=:old_login";
                 $stmt= $connection->con->prepare($sql);
                 return $stmt->execute($data);
@@ -193,6 +201,19 @@
                 echo "Error : ".$e;
                 return 0;
             }
+        }
+        
+        //toString method
+        public function toString()
+        {
+            return "[
+                        login : ".$this->login.", \n
+                        first_name : ".$this->first_name.", \n
+                        last_name : ".$this->last_name.", \n
+                        email : ".$this->email.", \n
+                        address : ".$this->address.", \n
+                        password : ".$this->password.", \n
+                    ]";
         }
     }
 ?>

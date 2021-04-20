@@ -104,22 +104,87 @@
         
         public function add()
         {
-            
+            try
+            {
+                return 1;
+            }
+            catch(Exception $e)
+            {
+                echo "Error : ".$e;
+                return 0;
+            }
         }
         
-        public function delete()
+        public function delete($id)
         {
-            
+            try
+            {
+                global $connection;
+                $data =
+                [
+                    'id'=>$id,//valeur=$id , param='id'
+                ];
+                $sql="delete from Product where id=:id";
+                //prepare la requette sql 
+                $stmt=$connection->con->prepare($sql);
+                //executer la requette en utilisant les parametre de la variable $data
+                return $stmt ->execute($data);
+            }
+            catch(Exception $e)
+            {
+                echo "Error : ".$e;
+                return 0;
+            }
         }
         
         public function getAll()
         {
-            
+            try
+            {
+                global $connection ;
+                $T=array();
+                $res=$connection -> con->query("select * from Product");
+                $i=0;
+                while($tab=$res -> fetch(PDO::FETCH_NUM))
+                {
+                    $T[$i]=$Array=array
+                    (
+                        'id'=>$this->id,
+                        'label'=>$this->label,
+                        'description'=>$this->description ,
+                        'number' => $this->number,
+                        'price' => $this->price,
+                        'photo' => $this->price,
+                        'idCat' => $this->idCat,
+                        'idProvider' => $this->idProvider
+                    );
+                }
+                return $T;
+            }
+            catch(Exception $e)
+            {
+                echo "Error : ".$e;
+                return null;
+            }
         }
         
         public function update()
         {
-            
+            try
+            {
+                return 1;
+            }
+            catch(Exception $e)
+            {
+                echo "Error : ".$e;
+                return 0;
+            }
+        }
+        
+        //toString() method
+        public function toString()
+        {
+            return "[]";
         }
     }
 ?>
