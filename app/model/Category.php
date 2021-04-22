@@ -154,6 +154,15 @@
            }
            return ($c);
         }
+         public function nbCategory()
+        {
+            $nb=0;
+            foreach ($this->getAll() as $v)
+            {
+                $nb++;
+            }
+            return $nb;
+        }
         
      }
  ?>

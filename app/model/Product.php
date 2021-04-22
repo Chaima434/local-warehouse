@@ -10,12 +10,25 @@
         private $price;
         private $photo;
         private $idCat;
+        private $login;
         private $idProvider;
 
         //id
         public function getId()
         {
             return $this->id;
+        }
+        
+        
+         public function getLogin()
+        {
+            return $this->login;
+        }
+        
+        
+         public function setLogin($login)
+        {
+             $this->login=$login;
         }
         
         public function setId($id)
@@ -106,7 +119,24 @@
         {
             try
             {
-                return 1;
+            global $connection;
+                $data =
+                [
+                    'label' => $this->label,
+                    'description' => $this->description,
+                    'number' => $this->number,
+                    'price' => $this->price,
+                    'photo' => $this->photo,
+                    'idCat' => $this->idCat,
+                    'login'=>$this->login,
+                     'idProvider'=>$this->idProvider,
+                    
+                ];
+                $sql = "INSERT INTO Product ( label,description,number,price ,photo ,idCat ,login ,idProvider)
+                        VALUES (:label,:description,:number, :price , :photo , :idCat ,:login ,:idProvider)";
+                $stmt= $connection->con->prepare($sql);
+                return $stmt->execute($data);
+                
             }
             catch(Exception $e)
             {
@@ -149,14 +179,15 @@
                 {
                     $T[$i]=$Array=array
                     (
-                        'id'=>$this->id,
-                        'label'=>$this->label,
-                        'description'=>$this->description ,
-                        'number' => $this->number,
-                        'price' => $this->price,
-                        'photo' => $this->price,
-                        'idCat' => $this->idCat,
-                        'idProvider' => $this->idProvider
+                        'id'=>$tab[0],
+                        'label'=>$tab[1],
+                        'description'=>$tab[2] ,
+                        'number' => $tab[3],
+                        'price' => $tab[4],
+                        'photo' => $tab[5],
+                        'idCat' => $tab[6],
+                         'login' => $tab[7],
+                        'idProvider' =>$tab[8]
                     );
                 }
                 return $T;
@@ -168,11 +199,36 @@
             }
         }
         
-        public function update()
+        public function update($id)
         {
             try
             {
-                return 1;
+                global $connection;
+                $data =
+                [
+                    'id'=>$id,
+                    'label' => $this->label,
+                    'description' => $this->description,
+                    'number' => $this->number,
+                    'price' => $this->price,
+                    'photo' => $this->photo,
+                    'idCat' => $this->idCat,
+                    'login'=>$this->login,
+                    'idProvider'=>$this->idProvider,
+                ];
+                $sql = "UPDATE Product SET 
+                            label=:label,
+                            description=:description,
+                            number=:number,
+                            price=:price,
+                            photo=:photo,
+                            idCat=:idCat,
+                            login=:login,
+                            idProvider=:idProvider
+                        WHERE id=:id";
+                $stmt= $connection->con->prepare($sql);
+                return $stmt->execute($data);
+            
             }
             catch(Exception $e)
             {
@@ -180,11 +236,45 @@
                 return 0;
             }
         }
+        public function nbProduct()
+        {
+            $nb=0;
+            foreach($this->getAll() as $v)
+            {
+                $nb++;
+            }
+            return($nb);
+        }
+        
+        
+        public function findProductById($id)
+        {
+            $product= new Product();
+            foreach($this->getAll() as $v)
+            {
+                if($v{'id'}==$id)
+                {
+                    $product->setId($v{'id'});
+                    $product->setLabel($v{'label'});
+                    $product->setDescription($v{'description'});
+                    $product->setNumber($v{'number'});
+                    $product->setPrice($v{'price'});
+                    $product->setPhoto(($v{'photo'});
+                    $product->setIdCat($v{'idCat'});
+                    $product->setidProvider($v{'idProvider'});
+                    $product->setlogin($v{'login'});
+                    break;
+                }
+                
+            }
+            return($product);
+        }
         
         //toString() method
         public function toString()
         {
             return "[]";
         }
+        
     }
 ?>

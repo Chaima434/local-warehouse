@@ -216,5 +216,15 @@
                         "Telephone : ".$this->telephone."
                     ]";
         }
+        public function nbProvider()
+        {
+            $nb=0;
+            foreach ($this->getAll() as $v)
+            {
+                $nb++;
+            }
+            return $nb;
+        }
     }
+    
 ?>
