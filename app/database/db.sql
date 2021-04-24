@@ -46,3 +46,13 @@ CREATE TABLE Product
         REFERENCES Provider(id)
         ON UPDATE CASCADE ON DELETE CASCADE
 );
+
+CREATE TABLE Client
+(
+    login varchar(80) PRIMARY key,
+    first_name varchar(50),
+    last_name varchar(80),
+    email varchar(35) UNIQUE,
+    address varchar(105),
+    password text
+);
