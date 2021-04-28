@@ -259,7 +259,7 @@
                     $product->setDescription($v{'description'});
                     $product->setNumber($v{'number'});
                     $product->setPrice($v{'price'});
-                    $product->setPhoto(($v{'photo'});
+                    $product->setPhoto($v{'photo'});
                     $product->setIdCat($v{'idCat'});
                     $product->setidProvider($v{'idProvider'});
                     $product->setlogin($v{'login'});
