@@ -12,7 +12,7 @@
         $admin->setLogin($_POST['login']);
         $admin->setFirst_name($_POST['first_name']);
         $admin->setLast_name($_POST['last_name']);
-        $admin->setEmail(strtolower($_POST['email'])); // we should the email to a lowercase
+        $admin->setEmail(strtolower($_POST['email'])); // we should convert the email to a lowercase
         $admin->setAddress($_POST['address']);
         $admin->setPassword(sha1($_POST['password']));
         if($admin->add() == 1)

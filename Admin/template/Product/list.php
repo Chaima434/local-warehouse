@@ -19,7 +19,6 @@
                                     <th> Label </th>
                                     <th>Number </th>
                                     <th>Price </th>
-                                    <th> Description </th>
                                     <th> Photo </th>
                                     <th>Category</th>
                                     <th> add By </th>
@@ -35,22 +34,23 @@
                                     {
                                         $id = $v{'id'};
                                         $Label= $v{'label'};
-                                         $number= $v{'number'};
-                                          $price= $v{'price'};
-                                           $Description = $v{'description'};
-                                            $photo= $v{'photo'};
-                                             $idCat= $v{'idCat'};
-                                              $login= $v{'login'};
-                                               $idProvider= $v{'idProvider'};
+                                        $number= $v{'number'};
+                                        $price= $v{'price'};
+                                        $photo= $v{'photo'};
+                                        $idCat= $v{'idCat'};
+                                        $login= $v{'login'};
+                                        $idProvider= $v{'idProvider'};
                                         echo "<tr>";
                                             echo "<td> $Label </td> ";
-                                             echo "<td>  $number </td> ";
-                                              echo "<td> $price </td> ";
-                                            echo "<td> $Description </td> ";
-                                             echo "<td> $photo </td> ";
-                                             echo "<td>$idCat </td> ";
-                                             echo "<td> $login </td> ";
-                                             echo "<td> $idProvider </td> ";
+                                            echo "<td>  $number </td> ";
+                                            echo "<td> $price </td> ";
+                                            echo "<td><img style='width:100px; height:80px;' src='$photo'  /></td> ";
+                                            echo "<td>$idCat </td> ";
+                                            echo "<td> $login </td> ";
+                                            $provider=$provider->findProviderById($idProvider);
+                                            $first_name=$provider->getFirst_name();
+                                            $last_name=$provider->getLast_name();
+                                            echo "<td> $first_name $last_name ($idProvider) </td> ";
                                             echo "<td><button onclick='update($id);' class='fa fa-pencil'></button></td>";
                                             echo "<td><button onclick='destroy($id);' class='fa fa-trash'></<button></td>";
                                         echo "<tr>";

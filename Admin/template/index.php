@@ -1,7 +1,8 @@
 <?php
-require_once('../app/action/Provider/nbProvider.php');
-require_once('../app/action/Category/nbCategory.php');
+    require_once('../app/action/Provider/nbProvider.php');
+    require_once('../app/action/Category/nbCategory.php');
 ?>
+
 <div class="content-wrapper">
     <div class="row">
         <div class="col-md-12 grid-margin">

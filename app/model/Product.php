@@ -10,25 +10,13 @@
         private $price;
         private $photo;
         private $idCat;
-        private $login;
         private $idProvider;
+        private $login;
 
         //id
         public function getId()
         {
             return $this->id;
-        }
-        
-        
-         public function getLogin()
-        {
-            return $this->login;
-        }
-        
-        
-         public function setLogin($login)
-        {
-             $this->login=$login;
         }
         
         public function setId($id)
@@ -45,6 +33,17 @@
         public function setLabel($label)
         {
             $this->label = $label;
+        }
+        
+        //login
+        public function getLogin()
+        {
+            return $this->login;
+        }
+        
+        public function setLogin($login)
+        {
+            $this->login = $login;
         }
         
         //description
@@ -119,7 +118,7 @@
         {
             try
             {
-            global $connection;
+                global $connection;
                 $data =
                 [
                     'label' => $this->label,
@@ -129,14 +128,13 @@
                     'photo' => $this->photo,
                     'idCat' => $this->idCat,
                     'login'=>$this->login,
-                     'idProvider'=>$this->idProvider,
-                    
+                    'idProvider'=>$this->idProvider,
                 ];
                 $sql = "INSERT INTO Product ( label,description,number,price ,photo ,idCat ,login ,idProvider)
                         VALUES (:label,:description,:number, :price , :photo , :idCat ,:login ,:idProvider)";
                 $stmt= $connection->con->prepare($sql);
                 return $stmt->execute($data);
-                
+
             }
             catch(Exception $e)
             {
@@ -181,14 +179,15 @@
                     (
                         'id'=>$tab[0],
                         'label'=>$tab[1],
-                        'description'=>$tab[2] ,
-                        'number' => $tab[3],
-                        'price' => $tab[4],
+                        'number'=>$tab[2] ,
+                        'price' => $tab[3],
+                        'description' => $tab[4],
                         'photo' => $tab[5],
                         'idCat' => $tab[6],
-                         'login' => $tab[7],
+                        'login' => $tab[7],
                         'idProvider' =>$tab[8]
                     );
+                    $i++;
                 }
                 return $T;
             }
@@ -199,7 +198,7 @@
             }
         }
         
-        public function update($id)
+        public function update()
         {
             try
             {
@@ -211,7 +210,6 @@
                     'description' => $this->description,
                     'number' => $this->number,
                     'price' => $this->price,
-                    'photo' => $this->photo,
                     'idCat' => $this->idCat,
                     'login'=>$this->login,
                     'idProvider'=>$this->idProvider,
@@ -221,14 +219,12 @@
                             description=:description,
                             number=:number,
                             price=:price,
-                            photo=:photo,
                             idCat=:idCat,
                             login=:login,
                             idProvider=:idProvider
                         WHERE id=:id";
                 $stmt= $connection->con->prepare($sql);
                 return $stmt->execute($data);
-            
             }
             catch(Exception $e)
             {
@@ -236,16 +232,6 @@
                 return 0;
             }
         }
-        public function nbProduct()
-        {
-            $nb=0;
-            foreach($this->getAll() as $v)
-            {
-                $nb++;
-            }
-            return($nb);
-        }
-        
         
         public function findProductById($id)
         {
@@ -265,9 +251,72 @@
                     $product->setlogin($v{'login'});
                     break;
                 }
-                
             }
             return($product);
+        }
+        public function findProductsByProvider($idProvider)
+        {
+            try
+            {
+                global $connection ;
+                $T=array();
+                $res=$connection -> con->query("select * from Product where idProvider=$idProvider");
+                $i=0;
+                while($tab=$res -> fetch(PDO::FETCH_NUM))
+                {
+                    $T[$i]=$Array=array
+                    (
+                        'id'=>$tab[0],
+                        'label'=>$tab[1],
+                        'number'=>$tab[2] ,
+                        'price' => $tab[3],
+                        'description' => $tab[4],
+                        'photo' => $tab[5],
+                        'idCat' => $tab[6],
+                        'login' => $tab[7],
+                        'idProvider' =>$tab[8]
+                    );
+                    $i++;
+                }
+                return $T;
+            }
+            catch(Exception $e)
+            {
+                echo "Error : ".$e;
+                return null;
+            }
+        }
+        public function findProductsByCategory($idCat)
+        {
+            try
+            {
+                global $connection ;
+                $T=array();
+                $res=$connection -> con->query("select * from Product where idCat=$idCat");
+                $i=0;
+                while($tab=$res -> fetch(PDO::FETCH_NUM))
+                {
+                    $T[$i]=$Array=array
+                    (
+                        'id'=>$tab[0],
+                        'label'=>$tab[1],
+                        'number'=>$tab[2] ,
+                        'price' => $tab[3],
+                        'description' => $tab[4],
+                        'photo' => $tab[5],
+                        'idCat' => $tab[6],
+                        'login' => $tab[7],
+                        'idProvider' =>$tab[8]
+                    );
+                    $i++;
+                }
+                return $T;
+            }
+            catch(Exception $e)
+            {
+                echo "Error : ".$e;
+                return null;
+            }
         }
         
         //toString() method
@@ -275,6 +324,5 @@
         {
             return "[]";
         }
-        
     }
 ?>

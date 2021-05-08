@@ -1,6 +1,8 @@
 <?php
-require_once ('../../connection/Connection.php');
+
+    require_once ('../../connection/Connection.php');
     require_once ('../../model/Category.php');
+    
     if(isset($_POST['id']))
     {
         $category= new Category();
@@ -10,7 +12,7 @@ require_once ('../../connection/Connection.php');
         }
         else
         {
-            echo "message error of deleting" ;
+            echo "Error of deleting" ;
         }
     }
     

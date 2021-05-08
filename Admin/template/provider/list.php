@@ -22,6 +22,7 @@
                                     <th>Telephone</th>
                                     <th>Update</th>
                                     <th>Delete</th>
+                                     <th>Consult</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,6 +44,7 @@
                                             echo "<td>$telephone</td>";
                                             echo "<td><button onclick='update($id);' class='fa fa-pencil'></button></td>";
                                             echo "<td><button onclick='destroy($id);' class='fa fa-trash'></<button></td>";
+                                             echo "<td><button onclick='consult($id)' class='fa fa-eye'></<button></td>";
                                         echo "<tr>";
                                         $i++;
                                     }
@@ -118,4 +120,9 @@
     {
         location.href = "Provider_Management.php?page=update&id="+id;
     }
+    function consult(id)
+    {
+        location.href = "Provider_Management.php?page=listProvider&id="+id;
+    }
+    
 </script>

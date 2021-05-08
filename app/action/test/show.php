@@ -10,10 +10,9 @@
     
     if(isset($_FILES['image']))
     {
-        $x= convert_to_base64($_FILES['image']);
+        $x = convert_to_base64($_FILES['image']);
         echo "<img src='$x' />";
     }
-    
     else
     {
         echo "Error";

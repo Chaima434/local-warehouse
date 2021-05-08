@@ -3,7 +3,7 @@
     require_once('../../model/Client.php');
     require_once('../../session/sessionClient.php');
     $client = new Client();
-    //echo json_encode($admin->getAll());
+
     if((isset($_POST['login'])) AND (isset($_POST['password'])))
     {
         $test = false;
@@ -29,7 +29,6 @@
         {
             $session = new SessionClient();
             $session->connect($client->getLogin(),$client->getPassword(),'../../../Client/index.php',3600);
-
         }
         else
         {

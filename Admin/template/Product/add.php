@@ -142,60 +142,58 @@
                     }
                     else
                     {
-                      if (number=="")
-                      {
-                        $('#number').focus ();
-                        alertify.error("You should enter how many "+ label);
-                        e.preventDefault();
-                      }
-                      else
-                      {
-                        if (price=="")
+                        if (number==="")
                         {
-                          $('#price').focus ();
-                            alertify.error("You Should enter how much");
+                            $('#number').focus ();
+                            alertify.error("You should enter how many "+ label);
                             e.preventDefault();
                         }
                         else
                         {
-                            if(photo=="")
+                            if (price==="")
                             {
-                                $('#photo').focus ();
-                                alertify.error("You Should insert the photo of this product");
+                                $('#price').focus ();
+                                alertify.error("You Should enter how much");
                                 e.preventDefault();
                             }
                             else
                             {
-                                if (description==="")
+                                if(photo==="")
                                 {
-                                    $('#description').focus ();
-                                    alertify.error("You Should enter the description");
+                                    $('#photo').focus ();
+                                    alertify.error("You Should insert the photo of this product");
                                     e.preventDefault();
                                 }
                                 else
                                 {
-                                    if (idProvider=="")
+                                    if (description==="")
                                     {
-                                        $('#idProvider').focus ();
-                                        alertify.error("You Should choose the provider");
+                                        $('#description').focus ();
+                                        alertify.error("You Should enter the description");
                                         e.preventDefault();
-                                
                                     }
                                     else
                                     {
-                                        if(idCat=="")
+                                        if (idProvider==="")
                                         {
-                                           $('#idCat').focus ();
-                                            alertify.error("You Should choose the category");
-                                            e.preventDefault(); 
+                                            $('#idProvider').focus ();
+                                            alertify.error("You Should choose the provider");
+                                            e.preventDefault();
+                                        }
+                                        else
+                                        {
+                                            if(idCat==="")
+                                            {
+                                                $('#idCat').focus ();
+                                                alertify.error("You Should choose the category");
+                                                e.preventDefault(); 
+                                            }
                                         }
                                     }
                                 }
                             }
                         }
-                      }
                     }
-                    
                 }
             );
         }

@@ -1,5 +1,5 @@
 <?php
-    require_once('../app/action/Category/getAll.php');
+    require_once('../app/action/Product/findProductsByProvider.php');
 ?>
 <style>
 
@@ -10,32 +10,51 @@
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">List of all Category</h4>
-                        <input type="text" id="myInput" onkeyup="myFunction();" placeholder="Search a category.." />
+                        <h4 class="card-title">List of all Product</h4>
+                        <input type="text" id="myInput" onkeyup="myFunction();" placeholder="Search a product.." />
                         <table class="table table-hover" id="example">
                             <thead>
                                 <tr>
+                                    
                                     <th> Label </th>
-                                    <th> Description </th>
+                                    <th>Number </th>
+                                    <th>Price </th>
+                                    <th> Photo </th>
+                                    <th>Category</th>
+                                    <th> add By </th>
+                                    <th>Provided By</th>
                                     <th>Update</th>
                                     <th>Delete</th>
-                                    <th> Consult </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                    foreach($listcat as $v)
+                                    $i = 1;
+                                    foreach( $listProduct as $v)
                                     {
                                         $id = $v{'id'};
                                         $Label= $v{'label'};
-                                       $Description = $v{'description'};
+                                        $number= $v{'number'};
+                                        $price= $v{'price'};
+                                        $photo= $v{'photo'};
+                                        $idCat= $v{'idCat'};
+                                        $login= $v{'login'};
+                                        $idProvider= $v{'idProvider'};
                                         echo "<tr>";
                                             echo "<td> $Label </td> ";
-                                            echo "<td> $Description </td> ";
+                                            echo "<td>  $number </td> ";
+                                            echo "<td> $price </td> ";
+                                            echo "<td><img style='width:100px; height:80px;' src='$photo'  /></td> ";
+                                            echo "<td>$idCat </td> ";
+                                            echo "<td> $login </td> ";
+                                            $provider=$provider->findProviderById($idProvider);
+                                            $first_name=$provider->getFirst_name();
+                                            $last_name=$provider->getLast_name();
+                                            echo "<td> $first_name $last_name ($idProvider) </td> ";
                                             echo "<td><button onclick='update($id);' class='fa fa-pencil'></button></td>";
                                             echo "<td><button onclick='destroy($id);' class='fa fa-trash'></<button></td>";
-                                            echo "<td><button onclick='consult($id)' class='fa fa-eye'></<button></td>";
                                         echo "<tr>";
+                                        $i++;
                                     }
                                 ?>
                             </tbody>
@@ -77,7 +96,7 @@
     {
         alertify.confirm
         (
-            "Do you want to delete this category ?.",
+            "Do you want to delete this product ?.",
             function()
             {
                 $.ajax
@@ -85,7 +104,7 @@
                     {
                         async: false, //if you want to change a global variable you should add this instruction
                         type: 'POST',
-                        url: "../app/action/Category/delete.php",
+                        url: "../app/action/Product/delete.php",
                         data:
                         {
                             'id' : id
@@ -107,11 +126,6 @@
     
     function update(id)
     {
-        location.href = "Category_Management.php?page=update&id="+id;
+        location.href = "Product_Management.php?page=update&id="+id;
     }
-    function consult(id)
-    {
-        location.href = "Category_Management.php?page=listCategory&id="+id;
-    }
-    
 </script>

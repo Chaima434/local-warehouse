@@ -56,3 +56,9 @@ CREATE TABLE Client
     address varchar(105),
     password text
 );
+
+ALTER TABLE Product
+MODIFY photo text;
+
+ALTER TABLE Product
+MODIFY photo longtext;
