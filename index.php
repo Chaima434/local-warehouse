@@ -1,3 +1,18 @@
+<?php
+	session_start();
+	if (isset($_SESSION['login']))
+	{
+		header ('location: Admin/index.php');
+	}
+	else
+	{
+		if (isset($_SESSION['loginClient']))
+		{
+			header ('location: Client/index.php');
+		}
+	}
+	
+?>
 <!doctype html>
 <html>
 	<head>
