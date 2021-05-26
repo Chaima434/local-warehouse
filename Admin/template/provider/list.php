@@ -124,5 +124,4 @@
     {
         location.href = "Provider_Management.php?page=listProvider&id="+id;
     }
-    
 </script>

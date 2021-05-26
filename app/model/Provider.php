@@ -207,12 +207,20 @@
         
         public function nbProvider()
         {
-            $nb=0;
-            foreach ($this->getAll() as $v)
+            try
             {
-                $nb++;
+                $nb=0;
+                foreach ($this->getAll() as $v)
+                {
+                    $nb++;
+                }
+                return $nb;
             }
-            return $nb;
+            catch(Exception $e)
+            {
+                echo "Error ".$e;
+                return 0;
+            }
         }
         
         public function toString()

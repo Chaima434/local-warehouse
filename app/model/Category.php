@@ -95,7 +95,7 @@
          {
             global $connection ;
             $T=array();
-            $res=$connection -> con->query("select * from Category");
+            $res=$connection->con->query("select * from Category");
             $i=0;
             while($tab=$res -> fetch(PDO::FETCH_NUM))//fetch va parcourir ligne par ligne les res
             {
@@ -182,6 +182,6 @@
         }
         
       }
-     
+        
    }
 ?>

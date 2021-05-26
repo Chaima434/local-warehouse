@@ -254,6 +254,7 @@
             }
             return($product);
         }
+        
         public function findProductsByProvider($idProvider)
         {
             try
@@ -286,6 +287,7 @@
                 return null;
             }
         }
+        
         public function findProductsByCategory($idCat)
         {
             try
@@ -318,7 +320,7 @@
                 return null;
             }
         }
-        
+    
         //toString() method
         public function toString()
         {

@@ -29,7 +29,7 @@
                 break;
                 case 'update' : require_once('template/provider/update.php');
                 break;
-               case 'listProvider' : require_once('template/provider/listProvider.php');
+                case 'listProvider' : require_once('template/provider/listProvider.php');
                 break;
               }
             }

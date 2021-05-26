@@ -29,11 +29,9 @@
                 break;
                 case 'update' : require_once('template/category/update.php');
                 break;
-              case 'listCategory' : require_once('template/category/listCategory.php');
+                case 'listCategory' : require_once('template/category/listCategory.php');
                 break;
-              
                 default : require_once('template/category/list.php');
-                  
                 break;
               }
             }

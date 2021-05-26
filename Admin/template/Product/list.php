@@ -47,10 +47,7 @@
                                             echo "<td><img style='width:100px; height:80px;' src='$photo'  /></td> ";
                                             echo "<td>$idCat </td> ";
                                             echo "<td> $login </td> ";
-                                            $provider=$provider->findProviderById($idProvider);
-                                            $first_name=$provider->getFirst_name();
-                                            $last_name=$provider->getLast_name();
-                                            echo "<td> $first_name $last_name ($idProvider) </td> ";
+                                            echo "<td> $idProvider </td> ";
                                             echo "<td><button onclick='update($id);' class='fa fa-pencil'></button></td>";
                                             echo "<td><button onclick='destroy($id);' class='fa fa-trash'></<button></td>";
                                         echo "<tr>";

@@ -41,34 +41,3 @@
         </form>
     </div>
 </div>
-<script>
-            $(document).ready
-            (
-                function()
-                {
-                    $("#btLogin").click
-                    (
-                        function(e)
-                        {
-                            var login = $('#login').val();
-                            var password = $('#password').val();
-                            if(login === "")
-                            {
-                                $("#login").focus();
-                                alertify.error('You Should enter your Login');
-                                e.preventDefault();
-                            }
-                            else
-                            {
-                                if(password === "")
-                                {
-                                    $("#password").focus();
-                                    alertify.error('You Should enter your password');
-                                    e.preventDefault();  
-                                }
-                            }
-                        }
-                    );
-                }
-            );
-        </script>
