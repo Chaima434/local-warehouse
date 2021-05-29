@@ -5,7 +5,7 @@
 	    private $dbname; //db name
 	    private $username;	//user name 
 	    private $password;	//password
-		public $con;
+		public $con; // la chaine de connexion
 		
 		public function __construct($host,$dbname,$username,$password)
 		{	
@@ -65,5 +65,5 @@
 		}
 	}
 	
-	$connection=new Connection('localhost','stocks','root','');
+	$connection=new Connection('localhost','stocks','root',''); // $connection bech netssta3mloha fi projet el kol 
 ?>

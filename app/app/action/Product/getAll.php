@@ -1,3 +1,0 @@
-<?php    
-    $product = new Product();
-?>

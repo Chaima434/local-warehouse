@@ -2,13 +2,13 @@
 
     require_once('../../connection/Connection.php');
     require_once('../../model/Client.php');
-    require_once('../../session/SessionClient.php');
+    require_once('../../session/sessionClient.php');
     // NB: toujours on doit declarer Connection.php et Admin.php
-    if
-    (
-       (isset($_POST['login']))&& (isset($_POST['first_name']))&&(isset($_POST['last_name']))&&(isset($_POST['email']))
-        &&(isset($_POST['address']))  &&(isset($_POST['password']))
-    )
+    //if
+    //(
+      // (isset($_POST['login']))&& (isset($_POST['first_name']))&&(isset($_POST['last_name']))&&(isset($_POST['email']))
+      //  &&(isset($_POST['address']))  &&(isset($_POST['password']))
+    //)
     {
         $client= new Client();
         $client->setLogin($_POST['login']);
@@ -28,8 +28,8 @@
             echo "bad";
         }
     }
-    else
-    {
-        echo "Error";
-    }
+    //else
+    //{
+      //  echo "Error";
+    //}
 ?>

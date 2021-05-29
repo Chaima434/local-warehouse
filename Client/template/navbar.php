@@ -60,6 +60,11 @@
 							</div>
 						</li>
 						<li class='nav-item $Services'>
+							<a class='nav-link' href='profile.php'>
+								Profile
+							</a>
+						</li>
+						<li class='nav-item $Services'>
 							<a class='nav-link' href='services.php'>
 								Services
 							</a>
@@ -70,13 +75,8 @@
 							</a>
 						</li>
 						<li class='nav-item'>
-							<a class='nav-link' href='../Admin'>
-								Admin area
-							</a>
-						</li>
-						<li class='nav-item'>
-							<a class='nav-link' href='../Client/'>
-								Client area
+							<a class='nav-link' href='logout.php'>
+								Logout
 							</a>
 						</li>
 					</ul>

@@ -99,8 +99,8 @@
             $i=0;
             while($tab=$res -> fetch(PDO::FETCH_NUM))//fetch va parcourir ligne par ligne les res
             {
-               $T[$i]=$Array=array
-               (
+              $T[$i]=$Array=array
+              (
                   'id'=>$tab[0],
                   'label'=>$tab[1],
                   'description'=>$tab[2]

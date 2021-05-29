@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 	<?php
-		require_once('template/head.php');
+		require_once('template/headPrincipal.php');
 		require_once('../app/action/Product/findProductsByCategory.php');
 	?>
 	<body>
@@ -52,6 +52,5 @@
 			</div>
 		</div>
 		</div>
-		
     </body>
 </html>

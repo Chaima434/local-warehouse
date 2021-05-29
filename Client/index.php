@@ -5,10 +5,13 @@
 ?>
 <!DOCTYPE html>
 <html>
-  <head>
-    
-  </head>
+  <?php
+    require_once('template/headPrincipal.php');
+  ?>
   <body>
-    
+    <?php
+      require_once('template/navbar.php');
+      activePage("");
+    ?>
   </body>
 </html>

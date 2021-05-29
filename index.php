@@ -1,13 +1,13 @@
 <?php
 
     session_start();
-    if($_SESSION['login'])
+    if(isset($_SESSION['login']))
     {
         header("location: Admin/");
     }
     else
     {
-        if($_SESSION['loginClient'])
+        if(isset($_SESSION['loginClient']))
         {
             header("location: Client/");
         }

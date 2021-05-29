@@ -4,8 +4,8 @@
     require_once('../../model/Admin.php');
     require_once('../../session/session.php');
     // NB: toujours on doit declarer Connection.php et Admin.php
-    if((isset($_POST['login']))&& (isset($_POST['first_name']))&&(isset($_POST['last_name']))&&(isset($_POST['email']))
-        &&(isset($_POST['address']))  &&(isset($_POST['password']))
+    if((isset($_POST['login'])) && (isset($_POST['first_name'])) && (isset($_POST['last_name'])) && (isset($_POST['email']))
+        &&(isset($_POST['address'])) && (isset($_POST['password']))
     )
     {
         $admin = new Admin();
@@ -28,6 +28,6 @@
     }
     else
     {
-        echo "Error";
+        echo "Error there are";
     }
 ?>
