@@ -1,3 +1,6 @@
+<?php
+    require_once('../app/action/Contact/getAll.php');
+?>
 <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
         <a class="navbar-brand brand-logo mr-5" href="index.html"><p style="font-family:verdana; font-size:30px;">Echry.com</p></a>
@@ -25,39 +28,25 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="messageDropdown">
                     <p class="mb-0 font-weight-normal float-left dropdown-header">Messages</p>
-                    <a class="dropdown-item">
-                        <div class="item-thumbnail">
-                            <img src="images/faces/face4.jpg" alt="image" class="profile-pic">
-                        </div>
-                        <div class="item-content flex-grow">
-                            <h6 class="ellipsis font-weight-normal">David Grey</h6>
-                            <p class="font-weight-light small-text text-muted mb-0">
-                                The meeting is cancelled
-                            </p>
-                        </div>
-                    </a>
-                    <a class="dropdown-item">
-                        <div class="item-thumbnail">
-                            <img src="images/faces/face2.jpg" alt="image" class="profile-pic">
-                        </div>
-                        <div class="item-content flex-grow">
-                            <h6 class="ellipsis font-weight-normal">Tim Cook</h6>
-                            <p class="font-weight-light small-text text-muted mb-0">
-                                New product launch
-                            </p>
-                        </div>
-                    </a>
-                    <a class="dropdown-item">
-                        <div class="item-thumbnail">
-                            <img src="images/faces/face3.jpg" alt="image" class="profile-pic">
-                        </div>
-                        <div class="item-content flex-grow">
-                            <h6 class="ellipsis font-weight-normal"> Johnson</h6>
-                            <p class="font-weight-light small-text text-muted mb-0">
-                                Upcoming board meeting
-                            </p>
-                        </div>
-                    </a>
+                    <?php
+                        foreach($listContact as $v)
+                        {
+                            echo "<a class='dropdown-item' href='message.php?id=".$v{'id'}."'>";
+                                echo "<div class='item-thumbnail'>";
+                                    echo "<img
+                                                src='https://toppng.com/uploads/preview/icons-logos-emojis-user-icon-png-transparent-11563566676e32kbvynug.png'
+                                                alt='image' class='profile-pic'
+                                            />";
+                                echo "</div>";
+                                echo "<div class='item-content flex-grow'>";
+                                    echo "<h6 class='ellipsis font-weight-normal'>".$v{'name'}."</h6>";
+                                    echo "<p class='font-weight-light small-text text-muted mb-0'>";
+                                        echo $v{'message'};
+                                    echo "</p>";
+                                echo "</div>";
+                            echo "</a>";
+                        }
+                    ?>
                 </div>
             </li>
             <li class="nav-item dropdown">

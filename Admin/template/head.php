@@ -6,6 +6,7 @@
     require_once('../app/model/Category.php');
     require_once('../app/model/Provider.php');
     require_once('../app/model/Product.php');
+    require_once('../app/model/Contact.php');
     //bech inajim nessta3mil requette select
 ?>
 <head>

@@ -23,22 +23,22 @@
                             Contact us.
                         </div>
                         <div class="card-body">
-                            <form>
+                            <form action="../app/action/Contact/add.php" method="POST">
                                 <div class="form-group">
                                     <label for="name">Name</label>
-                                    <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter name" required>
+                                    <input type="text" class="form-control" name="name" id="name"  placeholder="Enter name">
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email address</label>
-                                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" required>
+                                    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email">
                                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                                 </div>
                                 <div class="form-group">
                                     <label for="message">Message</label>
-                                    <textarea class="form-control" id="message" rows="6" required></textarea>
+                                    <textarea class="form-control" id="message" name="message" rows="6"></textarea>
                                 </div>
                                 <div class="mx-auto">
-                                    <button type="submit" class="btn btn-primary text-right">Submit</button></div>
+                                    <button type="submit" class="btn btn-primary text-right" id="btContact">Submit</button></div>
                             </form>
                         </div>
                     </div>
@@ -63,5 +63,47 @@
                 </div>
             </div>
         </div>
+        <script>
+            $(document).ready
+            (
+                function()
+                {
+                    $("#btContact").click
+                    (
+                        function(e)
+                        {
+                            var name = $("#name").val();
+                            var email = $("#email").val();
+                            var message = $("#message").val();
+                            
+                            if(name === "")
+                            {
+                                $("#name").focus();
+                                alertify.error('You Should enter your name');
+                                e.preventDefault();
+                            }
+                            else
+                            {
+                                if(email === "")
+                                {
+                                    $("#email").focus();
+                                    alertify.error('You Should enter your email');
+                                    e.preventDefault();
+                                }
+                                else
+                                {
+                                    if(message === "")
+                                    {
+                                        $("#message").focus();
+                                        alertify.error('You Should enter your Message');
+                                        e.preventDefault();
+                                    }
+                                }
+                            }
+                        }
+                    );
+                }
+            );
+        </script>
     </body>
 </html>
