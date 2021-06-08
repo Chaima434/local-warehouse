@@ -1,5 +1,7 @@
 <?php
     require_once('../app/action/Product/getAll.php');
+    require_once('../app/action/Category/findCategoryById.php');
+    require_once('../app/action/Provider/findProviderById.php');
 ?>
 <style>
 
@@ -37,17 +39,18 @@
                                         $number= $v{'number'};
                                         $price= $v{'price'};
                                         $photo= $v{'photo'};
-                                        $idCat= $v{'idCat'};
                                         $login= $v{'login'};
+                                        $category = $category->findCathegoryById($v{'idCat'});
+                                        $provider = $provider ->findProviderById($v{'idProvider'});
                                         $idProvider= $v{'idProvider'};
                                         echo "<tr>";
                                             echo "<td> $Label </td> ";
                                             echo "<td>  $number </td> ";
                                             echo "<td> $price </td> ";
-                                            echo "<td><img style='width:100px; height:80px;' src='$photo'  /></td> ";
-                                            echo "<td>$idCat </td> ";
+                                            echo "<td><img onclick='updateImage($id);' style='width:100px; height:80px;' src='$photo'  /></td> ";
+                                            echo "<td>".$category->getLabel()."</td> ";
                                             echo "<td> $login </td> ";
-                                            echo "<td> $idProvider </td> ";
+                                            echo "<td> ".$provider->getFirst_name().' '.$provider->getLast_name().'('.$provider->getId().')'."</td>";
                                             echo "<td><button onclick='update($id);' class='fa fa-pencil'></button></td>";
                                             echo "<td><button onclick='destroy($id);' class='fa fa-trash'></<button></td>";
                                         echo "<tr>";
@@ -124,5 +127,10 @@
     function update(id)
     {
         location.href = "Product_Management.php?page=update&id="+id;
+    }
+    
+    function updateImage(id)
+    {
+        location.href = "Product_Management.php?page=updateImage&id="+id;
     }
 </script>

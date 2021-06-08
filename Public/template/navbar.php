@@ -35,7 +35,7 @@
 		echo
 		"
 			<nav class='navbar navbar-expand-md navbar-dark bg-dark'>
-				<a class='navbar-brand' href='#'>E-Commerce</a>
+				<a class='navbar-brand' href='#'>Echry.com</a>
 				<button class='navbar-toggler' type='button'data-toggle='collapse' data-target='#navbarSupportedContent'>
 					<span class='navbar-toggler-icon'></span>
 				</button>
@@ -47,7 +47,7 @@
 							</a>
 						</li>
 						<li class='nav-item $About'>
-							<a class='nav-link' href='#'>
+							<a class='nav-link' href='about.php'>
 								About
 							</a>
 						</li>
@@ -80,12 +80,33 @@
 							</a>
 						</li>
 					</ul>
-					<form class='form-inline'>
-						<input class='form-control mr-sm-2' type='search' placeholder='Search' class='btn btn-in-light my-sm-0' type='submit' />
-						<button class='btn btn-light my-sm-0'>Search</button>
+					<form class='form-inline' method='POST' , action='searchProduct.php'>
+						<input name='search' id='search' class='form-control mr-sm-2' type='search' placeholder='Search' class='btn btn-in-light my-sm-0' type='submit' />
+						<button id='btSearch' class='btn btn-light my-sm-0'>Search</button>
 					</form>
 				</div>
 			</nav>
 		";
     }
 ?>
+<script>
+	$(document).ready
+            (
+                function()
+                {
+                    $("#btSearch").click
+                    (
+                        function(e)
+                        {
+							var search = $('#search').val();
+							if(search === "")
+							{
+								$("#search").focus();
+                                alertify.error('Search input is empty !');
+                                e.preventDefault();
+							}
+						}
+					);
+				}
+			);
+</script>

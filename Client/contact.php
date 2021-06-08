@@ -1,7 +1,13 @@
+<?php
+  require_once('../app/session/sessionClient.php');
+  $s = new SessionClient();
+  $s->afterConnection();
+?>
 <!DOCTYPE html>
 <html>
     <?php
         require_once('template/headPrincipal.php');
+        require_once('../app/action/Client/findClientByLogin.php');
     ?>
     <body>
         <?php
@@ -23,22 +29,22 @@
                             Contact us.
                         </div>
                         <div class="card-body">
-                            <form>
+                            <form method="POST" action="../app/action/Contact/add.php">
                                 <div class="form-group">
                                     <label for="name">Name</label>
-                                    <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter name" required>
+                                    <input type="text" class="form-control" name="name" id="name" value="<?php echo $client->getFirst_name().' '.$client->getLast_name(); ?>" aria-describedby="emailHelp" placeholder="Enter name">
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email address</label>
-                                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" required>
+                                    <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" value="<?php echo $client->getEmail(); ?>" placeholder="Enter email" >
                                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                                 </div>
                                 <div class="form-group">
                                     <label for="message">Message</label>
-                                    <textarea class="form-control" id="message" rows="6" required></textarea>
+                                    <textarea class="form-control" id="message" name="message" rows="6" required></textarea>
                                 </div>
                                 <div class="mx-auto">
-                                    <button type="submit" class="btn btn-primary text-right">Submit</button></div>
+                                    <button type="submit" id="btContact" class="btn btn-primary text-right">Submit</button></div>
                             </form>
                         </div>
                     </div>
@@ -63,5 +69,27 @@
                 </div>
             </div>
         </div>
+        <script>
+            $(document).ready
+            (
+                function()
+                {
+                    $("#btContact").click
+                    (
+                        function(e)
+                        {
+                            var message = $("#message").val();
+                            
+                            if(message === "")
+                            {
+                                $("#name").focus();
+                                alertify.error('You Should enter your message');
+                                e.preventDefault();
+                            }
+                        }
+                    );
+                }
+            );
+        </script> 
     </body>
 </html>

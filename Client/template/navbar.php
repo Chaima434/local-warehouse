@@ -4,6 +4,7 @@
     function activePage($page)
     {
         $Home = "";
+		$Profile = "";
         $About = "";
         $Services = "";
         $Contact = "";
@@ -21,6 +22,8 @@
         {
             case 'Home' : $Home = 'active';
 			break;
+			case 'Profile' :$Profile = 'active';
+				break;
 			case 'About' : $About = 'active';
 			break;
 			case 'Services' : $Services = 'active';
@@ -47,7 +50,7 @@
 							</a>
 						</li>
 						<li class='nav-item $About'>
-							<a class='nav-link' href='#'>
+							<a class='nav-link' href='about.php'>
 								About
 							</a>
 						</li>
@@ -59,7 +62,7 @@
 								$Categories
 							</div>
 						</li>
-						<li class='nav-item $Services'>
+						<li class='nav-item $Profile'>
 							<a class='nav-link' href='profile.php'>
 								Profile
 							</a>
@@ -80,12 +83,33 @@
 							</a>
 						</li>
 					</ul>
-					<form class='form-inline'>
-						<input class='form-control mr-sm-2' type='search' placeholder='Search' class='btn btn-in-light my-sm-0' type='submit' />
-						<button class='btn btn-light my-sm-0'>Search</button>
+					<form class='form-inline' method='POST' , action='searchProduct.php'>
+						<input name='search' id='search' class='form-control mr-sm-2' type='search' placeholder='Search' class='btn btn-in-light my-sm-0' type='submit' />
+						<button id='btSearch' class='btn btn-light my-sm-0'>Search</button>
 					</form>
 				</div>
 			</nav>
 		";
     }
 ?>
+<script>
+	$(document).ready
+            (
+                function()
+                {
+                    $("#btSearch").click
+                    (
+                        function(e)
+                        {
+							var search = $('#search').val();
+							if(search === "")
+							{
+								$("#search").focus();
+                                alertify.error('Search input is empty !');
+                                e.preventDefault();
+							}
+						}
+					);
+				}
+			);
+</script>

@@ -207,12 +207,12 @@
         public function toString()
         {
             return "[
-                        login : ".$this->login.", \n
-                        first_name : ".$this->first_name.", \n
-                        last_name : ".$this->last_name.", \n
-                        email : ".$this->email.", \n
-                        address : ".$this->address.", \n
-                        password : ".$this->password.", \n
+                        login => ".$this->login.", \n
+                        first_name => ".$this->first_name.", \n
+                        last_name => ".$this->last_name.", \n
+                        email => ".$this->email.", \n
+                        address => ".$this->address.", \n
+                        password => ".$this->password.", \n
                     ]";
         }
     }

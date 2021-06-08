@@ -30,11 +30,10 @@
             <div class="py-5">
                 <div class="grid grid-cols-2 gap-1">
                     <div class="text-center sm:text-left whitespace-nowrap">
-                        <a href="register.php">
-                            <p class="transition duration-200 mx-5 px-5 py-4 cursor-pointer font-normal text-sm rounded-lg text-gray-500 hover:bg-gray-200 focus:outline-none focus:bg-gray-300 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset">
-                                <span class="inline-block ml-1">Register</span>
-                            </p>
-                        </a>
+                        <p class="">
+                            <a href="register.php"><span class="transition duration-200 mx-5 px-5 py-4 cursor-pointer font-normal text-sm rounded-lg text-gray-500 hover:bg-gray-200 focus:outline-none focus:bg-gray-300 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset inline-block ml-1">Register</span></a>
+                            <a href="../Public/index.php"><span class="transition duration-200 mx-5 px-5 py-4 cursor-pointer font-normal text-sm rounded-lg text-gray-500 hover:bg-gray-200 focus:outline-none focus:bg-gray-300 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset inline-block ml-16">Public</span></a>
+                        </p>
                     </div>
                 </div>
             </div>

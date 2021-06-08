@@ -18,9 +18,9 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group row">
-                                            <label for="number" class="col-sm-3 col-form-label">Number</label>
+                                            <label for="number" class="col-sm-3 col-form-label" >Number</label>
                                             <div class="col-sm-9">
-                                                <input type="number" class="form-control" name="number" id="number" />
+                                                <input type="number" class="form-control" min="1" name="number" id="number" />
                                             </div>
                                         </div>
                                     </div>

@@ -198,7 +198,7 @@
             }
         }
         
-        public function update()
+        public function update($id)
         {
             try
             {
@@ -211,7 +211,6 @@
                     'number' => $this->number,
                     'price' => $this->price,
                     'idCat' => $this->idCat,
-                    'login'=>$this->login,
                     'idProvider'=>$this->idProvider,
                 ];
                 $sql = "UPDATE Product SET 
@@ -220,8 +219,30 @@
                             number=:number,
                             price=:price,
                             idCat=:idCat,
-                            login=:login,
                             idProvider=:idProvider
+                        WHERE id=:id";
+                $stmt= $connection->con->prepare($sql);
+                return $stmt->execute($data);
+            }
+            catch(Exception $e)
+            {
+                echo "Error : ".$e;
+                return 0;
+            }
+        }
+        
+        public function updateImage($id)
+        {
+            try
+            {
+                global $connection;
+                $data =
+                [
+                    'id'=>$id,
+                    'photo' => $this->photo,
+                ];
+                $sql = "UPDATE Product SET
+                            photo= :photo
                         WHERE id=:id";
                 $stmt= $connection->con->prepare($sql);
                 return $stmt->execute($data);
@@ -320,11 +341,74 @@
                 return null;
             }
         }
+        
+        public function nbProduct()
+        {
+            try
+            {
+                $nb = 0;
+                foreach($this->getAll() as $v)
+                {
+                    $nb++;
+                }
+                return $nb;
+            }
+            catch(Exception $e)
+            {
+                echo "Error : ".$e;
+                return 0;
+            }
+        }
+        
+        public function searchProductByAlphabet($alphabet)
+        {
+            try
+            {
+                global $connection ;
+                $T=array();
+                $res=$connection -> con->query("SELECT * FROM Product WHERE label LIKE '$alphabet%'");
+                $i=0;
+                while($tab=$res -> fetch(PDO::FETCH_NUM))
+                {
+                    $T[$i]=$Array=array
+                    (
+                        'id'=>$tab[0],
+                        'label'=>$tab[1],
+                        'number'=>$tab[2] ,
+                        'price' => $tab[3],
+                        'description' => $tab[4],
+                        'photo' => $tab[5],
+                        'idCat' => $tab[6],
+                        'login' => $tab[7],
+                        'idProvider' =>$tab[8]
+                    );
+                    $i++;
+                }
+                return $T;
+            }
+            catch(Exception $e)
+            {
+                echo "Error : ".$e;
+                return null;
+            }
+
+        }
     
         //toString() method
         public function toString()
         {
-            return "[]";
+            return "[
+                        'id'=>'".$this->id."',
+                        'label'=>'".$this->label."',
+                        'number'=>'".$this->number."',
+                        'price' => '".$this->price."',
+                        'description' => '".$this->description."',
+                        'photo' => '".$this->photo."',
+                        'idCat' => '".$this->idCat."',
+                        'login' => '".$this->login."',
+                        'idProvider' =>'".$this->idProvider."'
+                    ]";
         }
     }
+    
 ?>

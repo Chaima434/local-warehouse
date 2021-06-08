@@ -2,21 +2,25 @@
 <html>
 	<?php
 		require_once('template/head.php');
-		require_once('../app/action/Product/findProductsByCategory.php');
 	?>
 	<body>
 		<?php
 			require_once('template/navbar.php');
-			activePage("Category");
+			activePage("Home");
+			require_once('../app/action/Product/searchProductByAlphabet.php');
 		?>
 		<div class="container py-5">
 			<!-- For Demo Purpose-->
 			<header class="text-center mb-5">
-				<h1 class="display-4 font-weight-bold">List product of <?php echo $cat; ?></h1>
-			</header> <!-- pagination justify-content-center -->
+				<h1 class="display-4 font-weight-bold">Searching a Product</h1>
+				    <u>Echry.com</u></a>
+				</p>
+			</header>
+			<section class="pt-5 pb-5">
+			<!-- -->
 			<?php
 				$s="";
-				foreach($listProduct as $v)
+				foreach($T as $v)
 				{
 					$id = $v{'id'};
 					$label = $v{'label'};
@@ -42,16 +46,8 @@
 				}
 			?>
 			<?php
-				//echo $s;
+				echo $s;
 			?>
-		<div class="container">
-			<div class="row">
-				<?php
-					echo $s;
-				?>
-			</div>
-		</div>
-		</div>
-		
-    </body>
+
+	</body>
 </html>

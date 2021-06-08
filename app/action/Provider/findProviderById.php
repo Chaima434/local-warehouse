@@ -1,6 +1,6 @@
 <?php
     $provider = new Provider();
-    if($_GET['id'])
+    if(isset($_GET['id']))
     {
         $provider = $provider ->findProviderById($_GET['id']);
     }

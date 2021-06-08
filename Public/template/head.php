@@ -20,7 +20,7 @@
 	require_once('../app/model/Provider.php');
 ?>
 <head>
-	<title>E-Commerce</title>
+	<title>Echry.com</title>
 	<meta charset="UTF-8" />
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" >
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >

@@ -203,6 +203,49 @@
             }
         }
         
+        public function findClientByLogin($login)
+        {
+            try
+            {
+                $client = new Client();
+                foreach($this->getAll() as $v)
+                {
+                    if($v{'login'} == $login)
+                    {
+                        $client->setLogin($v{'login'});
+                        $client->setFirst_name($v{'first_name'});
+                        $client->setLast_name($v{'last_name'});
+                        $client->setEmail($v{'email'});
+                        $client->setAddress($v{'address'});
+                        $client->setPassword($v{'password'});
+                        return $client;
+                    }
+                }
+            }
+            catch(Exception $e)
+            {
+                echo "Error : ".$e;
+                return nul;
+            }
+        }
+        
+        public function nbClient()
+        {
+            try
+            {
+                $nb = 0;
+                foreach($this->getAll() as $v)
+                {
+                    $nb++;
+                }
+                return $nb;
+            }
+            catch(Exception $e)
+            {
+                return 0;
+            }
+        }
+        
         //toString method
         public function toString()
         {

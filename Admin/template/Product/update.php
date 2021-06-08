@@ -34,7 +34,7 @@
                                         <div class="form-group row">
                                             <label for="price" class="col-sm-3 col-form-label">Price</label>
                                             <div class="col-sm-9">
-                                                <input type="number" value="<?php echo $product->getPrice(); ?>" class="form-control" name="price" id="price" />
+                                                <input type="number" min="1" value="<?php echo $product->getPrice(); ?>" class="form-control" name="price" id="price" />
                                             </div>
                                         </div>
                                     </div>

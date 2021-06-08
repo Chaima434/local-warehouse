@@ -29,6 +29,8 @@
                 break;
                 case 'update' : require_once('template/product/update.php');
                 break;
+                case 'updateImage' : require_once('template/product/updateImage.php');
+                break;
               }
             }
           ?>

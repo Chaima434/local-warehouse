@@ -1,5 +1,5 @@
 <?php
-    
+    session_start();
     require_once('../../connection/Connection.php');
     require_once('../../model/Product.php');
     
@@ -11,8 +11,8 @@
         return  'data:image/' . $type . ';base64,' . base64_encode($data);
     }
     
-    if( ( isset($_POST['id']) ) && ( isset($_POST['label']) ) && ( isset($_POST['description']) ) && ( isset($_POST['number']) ) && ( isset($_POST['price']) )
-        &&( isset($_POST['idCat']) ) && ( isset($_POST['idProvider']) ) && ( isset($_POST['login']) ))
+    if((isset($_POST['id']) ) && ( isset($_POST['label']) ) && ( isset($_POST['description']) ) && ( isset($_POST['number']) ) && ( isset($_POST['price']) )
+        &&( isset($_POST['idCat']) ) && ( isset($_POST['idProvider'])))
     {
         $product= new Product();
         $product->setLabel($_POST['label']);
@@ -21,18 +21,17 @@
         $product->setPrice($_POST['price']);
         $product->setIdCat($_POST['idCat']);
         $product->setidProvider($_POST['idProvider']);
-        $product->setlogin($_POST['login']);
 
-        if($product>update($_POST['id']) == 1)
+        if($product->update($_POST['id']) == 1)
         {
-            echo "Insertion of new product successfully has been completed";
+            echo "Updating the product has been completed";
         }
         else
         {
-            echo "Error of insertion";
+            echo "Error of updating";
         }
     }
-    else
+    //else
     {
         echo "Error";
     }

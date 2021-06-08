@@ -226,12 +226,12 @@
         public function toString()
         {
             return "[
-                        id : ".$this->id.", \n".
-                        "first_name : ".$this->first_name.", \n".
-                        "last_name : ".$this->last_name.", \n".
-                        "Email : ".$this->email.", \n".
-                        "Address : ".$this->address.", \n".
-                        "Telephone : ".$this->telephone."
+                        Id => ".$this->id.",".
+                        "First_name => ".$this->first_name.",".
+                        "Last_name => ".$this->last_name.",".
+                        "Email => ".$this->email.",".
+                        "Address => ".$this->address.",".
+                        "Telephone => ".$this->telephone.","."
                     ]";
         }
     }

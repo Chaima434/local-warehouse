@@ -1,16 +1,16 @@
 <?php
     require_once('../../connection/Connection.php');
-    require_once('../../model/Admin.php');
+    require_once('../../model/Client.php');
     session_start ();
     if(($_POST['old_password']) && ($_POST['new_password']))
     {
         if(($_SESSION['password']) == sha1($_POST['old_password']))
         {
-            $admin = new Admin();
-            $admin->setPassword(sha1($_POST['new_password']));
-            if($admin->updatePassword($_SESSION['login']))
+            $client = new Client();
+            $client->setPassword(sha1($_POST['new_password']));
+            if($client->updatePassword($_SESSION['loginClient']))
             {
-                header ('location: ../../../Admin/logout.php');
+                header ('location: ../../../Client/logout.php');
             }
             else
             {

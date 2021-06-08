@@ -6,7 +6,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>RoyalUI Admin</title>
+  <title>Echry.com (Admin)</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
   <link rel="stylesheet" href="vendors/base/vendor.bundle.base.css">
@@ -58,6 +58,9 @@
                 </div>
                 <div class="text-center mt-4 font-weight-light">
                   Don't have an account? <a href="register.php" class="text-primary">Create</a>
+                </div>
+								<div class="text-center mt-4 font-weight-light">
+                  <a href="../Public/" class="text-primary">Public</a>
                 </div>
               </form>
             </div>

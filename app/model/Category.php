@@ -182,6 +182,14 @@
         }
         
       }
-        
+      
+      public function toString()
+      {
+        return "[
+                  'id'=>".$this->id."
+                  'label'=>".$this->label.","."
+                  'description'=>".$this->description."
+                ]";
+      }
    }
 ?>
